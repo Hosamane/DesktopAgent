@@ -1,5 +1,9 @@
+import time
+
 from PIL import ImageGrab
+import pyautogui
 import cv2
+import pyautogui
 import easyocr
 import torch
 import groundingdino
@@ -49,6 +53,8 @@ class HybridDetector:
         }
 
     def take_screenshot(self):
+        pyautogui.hotkey('win', 'd')    
+        time.sleep(2)
 
         ImageGrab.grab().save("screen.png")
 
@@ -57,6 +63,8 @@ class HybridDetector:
     def find_with_ocr(self, image_path, target):
 
         print("Trying OCR...")
+        pyautogui.hotkey('win', 'd')
+        
 
         results = self.reader.readtext(image_path)
 
