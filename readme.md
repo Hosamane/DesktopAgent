@@ -34,7 +34,6 @@ Detects applications using a multi-stage approach:
 Supported applications:
 
 - Notepad
-- Chrome (template available)
 
 ### Automated Application Launching
 
