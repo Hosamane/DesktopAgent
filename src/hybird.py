@@ -17,7 +17,7 @@ import os
 
 class HybridDetector:
 
-    def __init__(self):
+    def  __init__(self):
 
         # OCR
         self.reader = easyocr.Reader(['en'])
@@ -48,8 +48,8 @@ class HybridDetector:
 
         # Templates
         self.templates = {
-            "notepad": "templates/notepad_icon.png",
-            "chrome": "templates/chrome_icon.png"
+            "notepad": "notepad_icon.png"
+            # "chrome": "templates/chrome_icon.png"
         }
 
     def take_screenshot(self):
