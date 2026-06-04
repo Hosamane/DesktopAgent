@@ -7,11 +7,14 @@ import os
 from PIL import ImageGrab
 from datetime import datetime
 
+from desktop_manager import show_desktop
+
 
 
 def ocr(app_name):
-    pyautogui.hotkey('win', 'd')
-    time.sleep(2)
+    # pyautogui.hotkey('win', 'd')
+    # time.sleep(2)
+    show_desktop()
     img = ImageGrab.grab()
     SCREENSHOT_DIR = "../screenshots"
     RESULT_DIR = "../results"

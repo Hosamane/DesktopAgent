@@ -5,5 +5,3 @@ posts = requests.get(
 ).json()
 
 
-posts = posts[:1]
-text = f"Title: {post['title']}\n\n{post['body']}"

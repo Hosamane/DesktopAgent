@@ -6,6 +6,37 @@ import time
 import pyautogui
 import pygetwindow as gw
 
+
+from window_tracker import is_target_window_active
+
+# def is_notepad_active():
+
+#     try:
+#         window = gw.getActiveWindow()
+
+#         if window and "Notepad" in window.title:
+#             return True
+
+#     except Exception:
+#         pass
+
+#     return False
+
+
+def safe_type(text):
+
+    for ch in text:
+
+        if not is_target_window_active():
+            print("Target window is not active. Please focus the target window and try again.")
+            return False
+
+        pyautogui.write(ch)
+
+    return True
+
+
+
 def save_posts():
 # Fetch posts from JSONPlaceholder API
    posts = requests.get(
@@ -15,16 +46,29 @@ def save_posts():
 #    subprocess.Popen("notepad")
    time.sleep(2)
    for post in posts:
+        
         pyautogui.hotkey("ctrl","n")
         time.sleep(1)
+        # if not is_notepad_active():
+        #     print("Notepad is not active. Please open Notepad and try again.")
+        #     return
         text = f"Title: {post['title']}\n\n{post['body']}"
 
         # Type content
+        # if not is_notepad_active():
+        #     print("Notepad is not active. Please open Notepad and try again.")
+        #     return
+        time.sleep(1)
+     
+        if not safe_type(text):
+            return
         pyautogui.write(text, interval=0.01)
 
-        time.sleep(1)
 
         # Save file
+        # if not is_notepad_active():
+        #     print("Notepad is not active. Please open Notepad and try again.")
+        #     return
         pyautogui.hotkey("ctrl", "shift","s")
         time.sleep(2)
 
@@ -53,3 +97,5 @@ def save_posts():
         print(f"Saved {filename}")
 
    print("Single post test completed.")
+
+

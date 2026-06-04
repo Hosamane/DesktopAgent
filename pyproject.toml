@@ -11,6 +11,7 @@ dependencies = [
     "opencv-python>=4.13.0.92",
     "pyautogui>=0.9.54",
     "pygetwindow>=0.0.9",
+    "pywinauto>=0.6.9",
     "requests>=2.34.2",
     "transformers>=5.10.1",
 ]

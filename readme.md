@@ -133,62 +133,80 @@ git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
 cd YOUR_REPOSITORY
 ```
 
-### Create Virtual Environment
+### Install UV
 
 ```bash
-python -m venv .venv
-```
-
-### Activate Virtual Environment
-
-Windows:
-
-```bash
-.venv\Scripts\activate
-```
-
-Linux/macOS:
-
-```bash
-source .venv/bin/activate
+pip install uv
 ```
 
 ### Install Dependencies
 
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
 
-or
+This command automatically:
 
-```bash
-pip install easyocr opencv-python pillow pyautogui pygetwindow requests torch
-```
+* Creates a virtual environment (`.venv`)
+* Installs all dependencies from `pyproject.toml`
+* Uses versions locked in `uv.lock`
 
 ---
 
-## Usage
+## Running the Application
 
 Run:
 
 ```bash
-python main.py
+uv run python src/main.py
 ```
-
-The application will:
-
-- Show desktop.
-- Detect Notepad.
-- Launch Notepad.
-- Fetch JSONPlaceholder posts.
-- Type content automatically.
-- Save posts as text files.
 
 ---
 
+## What the Application Does
+
+1. Shows the desktop.
+2. Searches for the requested application using OCR.
+3. Falls back to template matching if OCR fails.
+4. Falls back to Windows Search if visual detection fails.
+5. Verifies the application launched successfully.
+6. Fetches sample data from JSONPlaceholder.
+7. Creates new documents automatically.
+8. Types content into the target application.
+9. Saves generated files.
+
+---
+
+## Updating Dependencies
+
+Add a package:
+
+```bash
+uv add package_name
+```
+
+Example:
+
+```bash
+uv add requests
+```
+
+Synchronize dependencies:
+
+```bash
+uv sync
+```
+
+Update lock file:
+
+```bash
+uv lock
+```
+
+
 ## Project Structure
 
-````text
+
 ```text
 VISIONPROJECT
 │
@@ -220,9 +238,7 @@ VISIONPROJECT
 └── screenshots/
 ````
 
-````
 
----
 
 ## Example Use Case
 

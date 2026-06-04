@@ -8,6 +8,8 @@ import numpy as np
 import pyautogui
 import time
 
+from desktop_manager import show_desktop
+
 def template_matching():
     SCREENSHOT_DIR = "../screenshots"
     RESULT_DIR = "../results"
@@ -15,8 +17,10 @@ def template_matching():
     os.makedirs(SCREENSHOT_DIR, exist_ok=True)
     os.makedirs(RESULT_DIR, exist_ok=True)
     print("Taking screenshot...")
-    pyautogui.hotkey('win', 'd')
-    time.sleep(2)
+    # pyautogui.hotkey('win', 'd')
+    # time.sleep(2)
+
+    show_desktop()
     img = ImageGrab.grab()
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     screenshot_path = os.path.join(SCREENSHOT_DIR, f"template_screenshot_{timestamp}.png")
