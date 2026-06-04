@@ -262,8 +262,9 @@ if __name__ == "__main__":
         )
 
         # Uncomment later
-        # import pyautogui
-        # pyautogui.click(
-        #     result["x"],
-        #     result["y"]
-        # )
+        import pyautogui
+        pyautogui.hotkey('win', 'd')
+        pyautogui.click(
+            result["x"],
+            result["y"]
+        )

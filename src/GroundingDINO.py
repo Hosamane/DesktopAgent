@@ -17,7 +17,7 @@ import pyautogui
 
 
 
-TARGET = "spotify."
+TARGET = "Notepad "
 SCREENSHOT = "screen2.png"
 
 
@@ -28,7 +28,7 @@ img = ImageGrab.grab()
 img.save(SCREENSHOT)
 
 print(f"Screenshot saved: {SCREENSHOT}")
-
+pyautogui.hotkey('win', 'd')
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -150,4 +150,5 @@ print(result)
 
 
 # import pyautogui
-# pyautogui.click(center_x, center_y)
+pyautogui.hotkey('win', 'd')
+pyautogui.doubleClick(center_x, center_y, duration=1)
