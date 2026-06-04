@@ -35,7 +35,8 @@ MANIFEST
 *.manifest
 *.spec
 
-
+models/
+output.txt
 .venv/
 .venv310/
 __pycache__/

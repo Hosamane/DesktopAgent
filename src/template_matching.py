@@ -1,4 +1,5 @@
 
+from datetime import datetime
 import os
 
 import cv2
@@ -17,18 +18,19 @@ def template_matching():
     pyautogui.hotkey('win', 'd')
     time.sleep(2)
     img = ImageGrab.grab()
-    screenshot_path = os.path.join(SCREENSHOT_DIR, "template_screenshot.png")
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    screenshot_path = os.path.join(SCREENSHOT_DIR, f"template_screenshot_{timestamp}.png")
     img.save(screenshot_path)
 
-    print("Screenshot saved as template_screenshot.png")
+    print(f"Screenshot saved as template_screenshot_{timestamp}.png")
     screen = cv2.imread(screenshot_path)
     template = cv2.imread("D:\\VISIONPROJECT\\templates\\notepad_icon1.png")
 
     if screen is None:
-        raise Exception("template_screenshot.png not found")
+        raise Exception(f"template_screenshot_{timestamp}.png not found")
 
     if template is None:
-        raise Exception("notepad_icon1.png not found")
+        raise Exception(f"notepad_icon1.png not found")
 
 
     result = cv2.matchTemplate(
@@ -72,7 +74,7 @@ def template_matching():
     )
 
 
-    result_path = os.path.join(RESULT_DIR, "template_detected.png")
+    result_path = os.path.join(RESULT_DIR, f"template_detected_{timestamp}.png")
     cv2.imwrite(result_path, screen)
 
 
@@ -86,5 +88,5 @@ def template_matching():
         print("Template not found")
         return False
     pyautogui.doubleClick(center_x, center_y, duration=1)
-    print("\ntemplate_detected.png saved")
+    print(f"\ntemplate_detected_{timestamp}.png saved")
     return True

@@ -5,6 +5,8 @@ import pyautogui
 import time
 import os
 from PIL import ImageGrab
+from datetime import datetime
+
 
 
 def ocr(app_name):
@@ -16,7 +18,8 @@ def ocr(app_name):
 
     os.makedirs(SCREENSHOT_DIR, exist_ok=True)
     os.makedirs(RESULT_DIR, exist_ok=True)
-    screenshot_path = os.path.join( SCREENSHOT_DIR,"ocr_screenshot.png")
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    screenshot_path = os.path.join( SCREENSHOT_DIR,f"ocr_screenshot_{timestamp}.png")
     img.save(screenshot_path)
     pyautogui.hotkey('win', 'd')
     # OCR
@@ -67,10 +70,10 @@ def ocr(app_name):
             pyautogui.doubleClick(x, y-25,duration=1)
 
             # Show result
-            result_path = os.path.join( RESULT_DIR, "ocr_result.png")
+            result_path = os.path.join( RESULT_DIR, f"ocr_result_{timestamp}.png")
 
             cv2.imwrite(result_path, img)
-            print("Saved ocr_result.png")
+            print(f"Saved ocr_result_{timestamp}.png")
             return True
             # Click center
 

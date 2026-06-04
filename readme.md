@@ -34,7 +34,6 @@ Detects applications using a multi-stage approach:
 Supported applications:
 
 - Notepad
-- Chrome (template available)
 
 ### Automated Application Launching
 
@@ -202,8 +201,8 @@ VISIONPROJECT
 │   ├── grounding_detector.py
 │   ├── ocr_detector.py
 │   ├── notepad_launcher.py
-│   ├── post_saver.py
 │   └── api/
+│       ├── post_save.py
 │       └── jsonplaceholder.py
 │
 ├── tests/

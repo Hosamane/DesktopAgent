@@ -2,7 +2,7 @@ import time
 import pyautogui
 import pygetwindow as gw
 
-from hybird import HybridDetector
+from hybrid import HybridDetector
 
 
 class NotepadLauncher:
